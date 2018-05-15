@@ -1,0 +1,38 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven { url "https://dl.bintray.com/jetbrains/kotlin-native-dependencies" }
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-native-gradle-plugin:+"
+    }
+}
+
+apply plugin: 'konan'
+
+konanArtifacts {
+
+    framework('KMulti', targets: ['iphone_sim']) {
+
+        // Enable multiplatform support for this artifact.
+        enableMultiplatform true
+
+        // Enable compiler optimizations (true/false).
+        enableOptimizations false
+
+        // Enable debugging for binaries generated (true/false).
+        enableDebug true
+
+        // Print all parameters during the build.
+        dumpParameters false
+
+        // Print time of compilation phases (equivalent of the `--time` command line option).
+        measureTime false
+    }
+    
+}
+
+dependencies {
+    expectedBy project(':common')
+}
