@@ -3,7 +3,6 @@ allprojects {
     buildscript {
         ext.kotlin_version = '1.2.40'
         ext.kotlin_native_version = '0.7'
-        ext.serialization_version = '0.5.0'
 
         repositories {
             google()
@@ -16,7 +15,6 @@ allprojects {
             classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
             classpath "org.jetbrains.kotlin:kotlin-native-gradle-plugin:$kotlin_native_version"
             classpath "com.android.tools.build:gradle:3.1.1"
-            classpath "org.jetbrains.kotlinx:kotlinx-gradle-serialization-plugin:$serialization_version"
         }
     }
 
