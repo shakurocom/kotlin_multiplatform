@@ -1,4 +1,4 @@
-package com.multiplatform.presentation
+package com.multiplatform.presentation.base
 
 abstract class BasePresenter<V : BaseView> {
 
@@ -22,7 +22,6 @@ abstract class BasePresenter<V : BaseView> {
     open fun onViewDetached() {
 
     }
-
 }
 
 

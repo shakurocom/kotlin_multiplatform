@@ -4,7 +4,4 @@ use_frameworks!
 
 target 'multi' do
 inherit! :search_paths
-pod 'Alamofire', '~> 4.7'
-pod 'SwiftyJSON'
-pod 'EasyDi'
 end

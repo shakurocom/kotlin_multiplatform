@@ -19,7 +19,7 @@ konanArtifacts {
         enableMultiplatform true
 
         // Enable compiler optimizations (true/false).
-        enableOptimizations false
+        enableOptimizations true
 
         // Enable debugging for binaries generated (true/false).
         enableDebug true

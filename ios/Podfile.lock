@@ -1,3 +1,18 @@
-PODFILE CHECKSUM: 4a40ceb08ea3682204692a252305112a577ceb5a
+PODS:
+  - Alamofire (4.7.2)
+  - EasyDi (1.4.0)
+  - SwiftyJSON (4.1.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.7)
+  - EasyDi
+  - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  EasyDi: 84cfe04e906c0f463b1b1d76ed4be3db446f9702
+  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
+
+PODFILE CHECKSUM: 35949ac918a9e6e3807dea4c347cad4112c82225
 
 COCOAPODS: 1.4.0
