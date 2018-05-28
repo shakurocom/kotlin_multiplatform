@@ -21,32 +21,27 @@ import kotlinx.coroutines.experimental.android.UI
 class ReposActivity : AppCompatActivity(), ReposView {
 
     private val exchangeRepository = ReposRepository(
-            "https://api.github.com/",
-            "shakurocom"
+            baseUrl = "https://api.github.com/",
+            userName = "shakurocom"
     )
 
     private val interactor = ReposInteractor(exchangeRepository, CommonPool)
+
+    private val presenter = ReposPresenter(
+            uiContext = UI,
+            interactor = interactor
+    )
 
     private val adapter by lazy {
         ListDelegationAdapter(AdapterDelegatesManager<List<Any>>().addDelegate(RepoItemDelegate()))
     }
 
-    private val presenter = ReposPresenter(
-        uiContext = UI,
-        interactor = interactor
-    )
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_repos)
 
-    override fun showRepoList(repoList: List<GithubRepo>) {
-        adapter.items = repoList
-        adapter.notifyDataSetChanged()
-    }
-
-    override fun showLoading(loading: Boolean) {
-        loadingProgress.visibility = if (loading) VISIBLE else GONE
-    }
-
-    override fun showError(errorMessage: String) {
-        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
+        tickersRecyclerView.adapter = adapter
+        tickersRecyclerView.layoutManager = LinearLayoutManager(this)
     }
 
     override fun onStart() {
@@ -59,11 +54,16 @@ class ReposActivity : AppCompatActivity(), ReposView {
         presenter.detach()
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_repos)
+    override fun showRepoList(repoList: List<GithubRepo>) {
+        adapter.items = repoList
+        adapter.notifyDataSetChanged()
+    }
 
-        tickersRecyclerView.adapter = adapter
-        tickersRecyclerView.layoutManager = LinearLayoutManager(this)
+    override fun showLoading(loading: Boolean) {
+        loadingProgress.visibility = if (loading) VISIBLE else GONE
+    }
+
+    override fun showError(errorMessage: String) {
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show()
     }
 }

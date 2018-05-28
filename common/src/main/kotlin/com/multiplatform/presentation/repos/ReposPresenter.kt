@@ -22,7 +22,7 @@ class ReposPresenter(
                 val repoList = interactor.getRepos()
                 view?.showRepoList(repoList)
             } catch (e: Throwable) {
-                view?.showError(e.message ?: "Error")
+                view?.showError(e.message ?: "Can't load repositories")
             }
             view?.showLoading(false)
         }
